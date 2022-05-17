@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "flake8-cgx"
+version = "0.1.0"
+description = "Flake8 plugin for cgx (Collagraph single file component) files"
+authors = ["Berend Klein Haneveld <berendkleinhaneveld@gmail.com>"]
+license = "MIT"
+packages = [
+    { include = "cgx" },
+]
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Topic :: Software Development",
+    "Framework :: Flake8",
+]
+
+[tool.poetry.dependencies]
+python = "~3.9"
+
+[tool.poetry.dev-dependencies]
+black = "*"
+flake8 = "*"
+flake8-black = "*"
+flake8-import-order = "*"
+
+[tool.poetry.plugins."flake8.extension"]
+"CGX" = "cgx:CGXTreeChecker"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
