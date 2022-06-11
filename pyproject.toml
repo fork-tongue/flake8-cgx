@@ -20,12 +20,14 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "~3.9"
+python = ">=3.9"
+collagraph = ">=0.3.0"
 
 [tool.poetry.dev-dependencies]
 black = "*"
 flake8 = "*"
 flake8-black = "*"
+flake8-bugbear = "*"
 flake8-import-order = "*"
 
 [tool.poetry.plugins."flake8.extension"]
