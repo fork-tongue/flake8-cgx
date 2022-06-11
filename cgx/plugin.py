@@ -1,13 +1,14 @@
 import argparse
 import ast
-import logging
 from dataclasses import dataclass
 from importlib import metadata
+import logging
 from pathlib import Path
 from typing import ClassVar, Iterable, NamedTuple, Union
 
 from flake8.options.manager import OptionManager
 
+from . import patch  # noqa: F401
 
 LOG = logging.getLogger("flake8.cgx")
 
@@ -33,20 +34,19 @@ class CGXTreeChecker:
     options: Union[argparse.Namespace, None] = None
 
     def run(self) -> Iterable[Error]:
-        assert self.tree is not None
         path = Path(self.filename)
         if path.suffix == ".cgx":
-            # yield from _check_for_type_comments(path)
             visitor = CGXVisitor(filename=path)
-            # for error in visitor.run(LegacyNormalizer().visit(self.tree)):
-            for error in visitor.visit(self.tree):
+            for error in visitor.run(self.tree):
                 yield error
 
     @classmethod
     def add_options(cls, parser: OptionManager) -> None:
         """This is brittle, there's multiple levels of caching of defaults."""
         if isinstance(parser.parser, argparse.ArgumentParser):
-            parser.parser.set_defaults(filename="*.py,*.cgx")
+            values = (parser.parser.get_default("filename") or "").split(",")
+            values.append("*.cgx")
+            parser.parser.set_defaults(filename=",".join(values))
         else:
             for option in parser.options:
                 if option.long_option_name == "--filename":
