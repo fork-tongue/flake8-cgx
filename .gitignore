@@ -1,6 +1,16 @@
-*.egg-info/
+# Python
 __pycache__
-.vscode
-.coverage
+*.egg-info/
 dist
 build
+.venv
+.pytest_cache
+.coverage
+
+# Editors
+*.sublime-project
+*.sublime-workspace
+.vscode
+
+# OS
+.DS_Store
