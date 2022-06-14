@@ -47,7 +47,7 @@ colorama = {version = "*", markers = "platform_system == \"Windows\""}
 
 [[package]]
 name = "collagraph"
-version = "0.3.0"
+version = "0.4.0"
 description = "Reactive user interfaces"
 category = "main"
 optional = false
@@ -210,7 +210,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9"
-content-hash = "ca547293fdcaff7e6912ec931e4cb86fcd9182900392f0a928ebfbececfe08b8"
+content-hash = "7931f9d2c95a2b1d7a129da831f2f123faf927ab6e38618c53040e535aec80fe"
 
 [metadata.files]
 attrs = [
@@ -247,8 +247,8 @@ click = [
     {file = "click-8.1.3.tar.gz", hash = "sha256:7682dc8afb30297001674575ea00d1814d808d6a36af415a82bd481d37ba7b8e"},
 ]
 collagraph = [
-    {file = "collagraph-0.3.0-py3-none-any.whl", hash = "sha256:14560428f44aa506693bdf6e59b669cd22851f755fb7b3904f930e45a47e570a"},
-    {file = "collagraph-0.3.0.tar.gz", hash = "sha256:5133da0c3b2e4de36ccfa8af74ea900f7d65fb8f01a667fce2a5a526ecb26a71"},
+    {file = "collagraph-0.4.0-py3-none-any.whl", hash = "sha256:37840fe38ac985be178ec03fd958da265bd526a0d59afc20ff33ce6c4aa34ba4"},
+    {file = "collagraph-0.4.0.tar.gz", hash = "sha256:a301a4b88ec48837911cbfd36c342497649f32ded3afeda2f3fab246c54c1766"},
 ]
 colorama = [
     {file = "colorama-0.4.4-py2.py3-none-any.whl", hash = "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"},
