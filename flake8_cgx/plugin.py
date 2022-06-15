@@ -22,8 +22,8 @@ class CGXTreeChecker:
     options: Union[argparse.Namespace, None] = None
 
     def run(self):
-        for _ in []:
-            yield
+        return
+        yield
 
     @classmethod
     def add_options(cls, parser: OptionManager) -> None:
