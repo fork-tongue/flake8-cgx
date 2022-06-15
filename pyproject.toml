@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Flake8 plugin for cgx (Collagraph single file component) files"
 authors = ["Berend Klein Haneveld <berendkleinhaneveld@gmail.com>"]
 license = "MIT"
+readme = "README.md"
 classifiers = [
     "Environment :: Console",
     "Intended Audience :: Developers",
