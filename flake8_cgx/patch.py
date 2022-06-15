@@ -33,7 +33,13 @@ def read_lines_from_filename_patched(self) -> List[str]:
             actual_result = result[start:end]
             # Prepend some empty (commented) lines to make the errors
             # point out the right location in the cgx file
-            actual_result = [*(start * ["#\n"]), *actual_result]
+            actual_result = [
+                # prepend with some empty lines
+                *(start * ["# noqa\n"]),
+                *actual_result,
+                # append some more empty lines
+                *(9 * ["# noqa\n"]),
+            ]
 
             return actual_result
 
