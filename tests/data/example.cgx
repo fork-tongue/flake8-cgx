@@ -68,8 +68,9 @@
 
 
 <script lang="python">
-from PySide6.QtWidgets import QBoxLayout
 import collagraph as cg
+from PySide6.QtGui import QAction
+from PySide6.QtWidgets import QBoxLayout
 
 
 class Directives(cg.Component):

@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Flake8 plugin for cgx (Collagraph single file component) files"
 authors = ["Berend Klein Haneveld <berendkleinhaneveld@gmail.com>"]
 license = "MIT"
+readme = "README.md"
 classifiers = [
     "Environment :: Console",
     "Intended Audience :: Developers",
@@ -19,13 +20,15 @@ classifiers = [
 [tool.poetry.dependencies]
 python = ">=3.9"
 flake8 = ">=4.0.0"
-collagraph = ">=0.4.0"
+collagraph = ">=0.4.1"
 
 [tool.poetry.dev-dependencies]
 black = "*"
 flake8-black = "*"
 flake8-bugbear = "*"
 flake8-import-order = "*"
+pytest = "*"
+twine = { version = "*", python = ">=3.9,<4.0.0" }
 
 [tool.poetry.plugins."flake8.extension"]
 "CGX" = "flake8_cgx:CGXTreeChecker"
