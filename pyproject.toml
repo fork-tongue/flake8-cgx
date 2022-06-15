@@ -19,13 +19,14 @@ classifiers = [
 [tool.poetry.dependencies]
 python = ">=3.9"
 flake8 = ">=4.0.0"
-collagraph = ">=0.4.0"
+collagraph = ">=0.4.1"
 
 [tool.poetry.dev-dependencies]
 black = "*"
 flake8-black = "*"
 flake8-bugbear = "*"
 flake8-import-order = "*"
+pytest = "*"
 
 [tool.poetry.plugins."flake8.extension"]
 "CGX" = "flake8_cgx:CGXTreeChecker"
