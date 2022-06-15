@@ -27,6 +27,7 @@ flake8-black = "*"
 flake8-bugbear = "*"
 flake8-import-order = "*"
 pytest = "*"
+twine = { version = "*", python = ">=3.9,<4.0.0" }
 
 [tool.poetry.plugins."flake8.extension"]
 "CGX" = "flake8_cgx:CGXTreeChecker"
