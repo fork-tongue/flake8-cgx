@@ -3,25 +3,13 @@ import ast
 from dataclasses import dataclass
 from importlib import metadata
 import logging
-from pathlib import Path
-from typing import ClassVar, Iterable, NamedTuple, Union
+from typing import ClassVar, Union
 
 from flake8.options.manager import OptionManager
 
 from . import patch  # noqa: F401
 
 LOG = logging.getLogger("flake8.cgx")
-
-
-class Error(NamedTuple):
-    lineno: int
-    col: int
-    message: str
-    type: type
-
-
-class CGXVisitor(ast.NodeVisitor):
-    pass
 
 
 @dataclass
@@ -33,12 +21,9 @@ class CGXTreeChecker:
     filename: str = "(none)"
     options: Union[argparse.Namespace, None] = None
 
-    def run(self) -> Iterable[Error]:
-        path = Path(self.filename)
-        if path.suffix == ".cgx":
-            visitor = CGXVisitor(filename=path)
-            for error in visitor.run(self.tree):
-                yield error
+    def run(self):
+        for _ in []:
+            yield
 
     @classmethod
     def add_options(cls, parser: OptionManager) -> None:
@@ -47,6 +32,11 @@ class CGXTreeChecker:
             values = (parser.parser.get_default("filename") or "").split(",")
             values.append("*.cgx")
             parser.parser.set_defaults(filename=",".join(values))
+
+            # Ignore BLK901 for all cgx files
+            values = parser.parser.get_default("per_file_ignores" or "").split(",")
+            values.append("*.cgx:BLK901")
+            parser.parser.set_defaults(per_file_ignores=",".join(values))
         else:
             for option in parser.options:
                 if option.long_option_name == "--filename":

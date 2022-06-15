@@ -4,13 +4,11 @@ import tokenize
 from typing import List
 
 from collagraph.cgx import cgx
-from flake8.checker import FileChecker
 from flake8.processor import FileProcessor
 
 
 build_ast_orig = FileProcessor.build_ast
 read_lines_from_filename_orig = FileProcessor.read_lines_from_filename
-report_orig = FileChecker.report
 
 
 def build_ast_patched(self) -> ast.AST:
@@ -64,24 +62,7 @@ def read_lines_from_filename(self):
     return read_lines_from_filename_orig(self)
 
 
-def report(
-    self,
-    error_code: str,
-    line_number: int,
-    column: int,
-    text: str,
-) -> str:
-    if not self.filename.endswith(".cgx"):
-        report_orig(self, error_code, line_number, column, text)
-    elif text.startswith("BLK901"):
-        pass
-    else:
-        report_orig(self, error_code, line_number, column, text)
-
-
 # Monkey patch the build_ast function and use collagraph to
 # actually build the ast instead
 FileProcessor.build_ast = build_ast
 FileProcessor.read_lines_from_filename = read_lines_from_filename
-
-FileChecker.report = report
