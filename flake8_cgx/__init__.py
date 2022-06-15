@@ -1,1 +1,1 @@
-from .plugin import CGXTreeChecker
+from .plugin import CGXTreeChecker  # noqa: F401
