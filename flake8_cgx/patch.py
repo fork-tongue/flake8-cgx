@@ -13,28 +13,18 @@ read_lines_from_filename_orig = FileProcessor.read_lines_from_filename
 
 def build_ast_patched(self) -> ast.AST:
     """Build an abstract syntax tree from the list of lines."""
-    if not hasattr(self, "parser"):
-        self.parser = cgx.CGXParser()
-        self.parser.feed(Path(self.filename).read_text())
-
-    try:
-        tree, name = cgx.construct_ast(Path(self.filename))
-    except ValueError:
-        # TODO: convert ValueError into an actual flake8 error
-        tree = cgx.get_script_ast(self.parser, Path(self.filename))
-        ast.fix_missing_locations(tree)
+    tree, _ = cgx.construct_ast(Path(self.filename))
     return tree
 
 
 def read_lines_from_filename_patched(self) -> List[str]:
     """Read the lines for a file."""
     try:
-        if not hasattr(self, "parser"):
-            self.parser = cgx.CGXParser()
-            self.parser.feed(Path(self.filename).read_text())
+        parser = cgx.CGXParser()
+        parser.feed(Path(self.filename).read_text())
 
         # Read the data from script block
-        script_node = self.parser.root.child_with_tag("script")
+        script_node = parser.root.child_with_tag("script")
         start, end = script_node.location[0], script_node.end[0] - 1
 
         with tokenize.open(self.filename) as fh:
