@@ -17,7 +17,7 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.9"
+python = ">=3.8"
 flake8 = ">=4.0.0"
 collagraph = ">=0.4.1"
 
