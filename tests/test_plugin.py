@@ -1,4 +1,5 @@
 from flake8.main import application
+
 from flake8_cgx import CGXTreeChecker
 
 
